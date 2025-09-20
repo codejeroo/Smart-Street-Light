@@ -35,7 +35,6 @@ const TechnologyComparison = () => {
         latency: Math.max(0, 100 - (networkMetrics.wsn.latency / 200 * 100)), // Lower is better, invert
         throughput: (networkMetrics.wsn.throughput / 1000) * 100, // Normalize to 1000 bps max
         capacity: networkMetrics.wsn.capacity, // Already 0-100
-        irr: Math.min(100, (networkMetrics.wsn.irr || economicMetrics.wsn.irr) / 100), // Scale down large IRR
         costEffectiveness: (economicMetrics.wsn.bcr / 600) * 100 // Normalize BCR
       },
       lora: {
@@ -43,7 +42,6 @@ const TechnologyComparison = () => {
         latency: Math.max(0, 100 - (networkMetrics.lora.latency / 200 * 100)),
         throughput: (networkMetrics.lora.throughput / 1000) * 100,
         capacity: networkMetrics.lora.capacity,
-        irr: Math.min(100, (networkMetrics.lora.irr || economicMetrics.lora.irr) / 100),
         costEffectiveness: (economicMetrics.lora.bcr / 600) * 100
       }
     }
@@ -57,7 +55,6 @@ const TechnologyComparison = () => {
       'Low Latency',
       'Throughput',
       'Capacity',
-      'ROI',
       'Cost Effectiveness'
     ],
     datasets: [
@@ -68,7 +65,6 @@ const TechnologyComparison = () => {
           normalizedData.wsn.latency,
           normalizedData.wsn.throughput,
           normalizedData.wsn.capacity,
-          normalizedData.wsn.irr,
           normalizedData.wsn.costEffectiveness
         ],
         borderColor: '#0072F5',
@@ -86,7 +82,6 @@ const TechnologyComparison = () => {
           normalizedData.lora.latency,
           normalizedData.lora.throughput,
           normalizedData.lora.capacity,
-          normalizedData.lora.irr,
           normalizedData.lora.costEffectiveness
         ],
         borderColor: '#3895D3',
@@ -192,12 +187,6 @@ const TechnologyComparison = () => {
       wsn: `${networkMetrics.wsn.throughput.toFixed(0)} bps`,
       lora: `${networkMetrics.lora.throughput.toFixed(0)} bps`,
       winner: networkMetrics.wsn.throughput > networkMetrics.lora.throughput ? 'wsn' : 'lora'
-    },
-    {
-      label: 'IRR',
-      wsn: `${economicMetrics.wsn.irr}%`,
-      lora: `${economicMetrics.lora.irr}%`,
-      winner: economicMetrics.wsn.irr > economicMetrics.lora.irr ? 'wsn' : 'lora'
     }
   ]
   
