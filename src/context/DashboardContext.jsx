@@ -139,9 +139,10 @@ const generateDataLogs = (nodes) => {
 export const DashboardProvider = ({ children }) => {
   const [technology, setTechnology] = useState('wsn') // 'wsn' or 'lora'
   const [isOnline, setIsOnline] = useState(true)
-  const [nodes, setNodes] = useState([])
-  const [alerts, setAlerts] = useState([])
-  const [dataLogs, setDataLogs] = useState([])
+  const generatedNodes = useState(() => generateCaragaNodes())[0] // Generate once
+  const [nodes, setNodes] = useState(generatedNodes)
+  const [alerts, setAlerts] = useState(() => generateSystemAlerts())
+  const [dataLogs, setDataLogs] = useState(() => generateDataLogs(generatedNodes)) // Initialize with generated logs
   const [lastUpdate, setLastUpdate] = useState(new Date())
   
   // Network performance metrics

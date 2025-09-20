@@ -8,7 +8,7 @@ const NetworkPerformance = () => {
   const { isDark } = useTheme()
   const metrics = networkMetrics[technology]
   
-  const MetricCard = ({ icon: Icon, label, value, unit, color = 'text-caraga-blue' }) => (
+  const MetricCard = ({ icon: Icon, label, value, unit, color = 'text-aethersense-primary' }) => (
     <div className={`rounded-lg p-4 border transition-colors ${
       isDark 
         ? 'bg-slate-700/50 border-slate-600' 
@@ -34,7 +34,7 @@ const NetworkPerformance = () => {
     <div className={`rounded-lg p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg transition-colors duration-300`}>
       <div className="flex items-center justify-between mb-6">
         <h2 className={`text-lg font-semibold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-          <Activity className="w-5 h-5 text-caraga-blue" />
+          <Activity className="w-5 h-5 text-aethersense-primary" />
           Network Performance
         </h2>
         <div className={`text-xs uppercase font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -81,10 +81,12 @@ const NetworkPerformance = () => {
         <div className="mt-6 space-y-4">
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="text-gray-300">PDR</span>
-              <span className="text-green-400">{metrics.pdr.toFixed(1)}%</span>
+              <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>PDR</span>
+              <span className="text-green-500">{metrics.pdr.toFixed(1)}%</span>
             </div>
-            <div className="w-full bg-dark-700 rounded-full h-2">
+            <div className={`w-full rounded-full h-2 ${
+              isDark ? 'bg-slate-700' : 'bg-gray-200'
+            }`}>
               <div 
                 className="bg-green-500 h-2 rounded-full transition-all duration-500"
                 style={{ width: `${metrics.pdr}%` }}
@@ -94,10 +96,12 @@ const NetworkPerformance = () => {
           
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="text-gray-300">Capacity</span>
-              <span className="text-purple-400">{metrics.capacity.toFixed(0)}%</span>
+              <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>Capacity</span>
+              <span className="text-purple-500">{metrics.capacity.toFixed(0)}%</span>
             </div>
-            <div className="w-full bg-dark-700 rounded-full h-2">
+            <div className={`w-full rounded-full h-2 ${
+              isDark ? 'bg-slate-700' : 'bg-gray-200'
+            }`}>
               <div 
                 className="bg-purple-500 h-2 rounded-full transition-all duration-500"
                 style={{ width: `${metrics.capacity}%` }}

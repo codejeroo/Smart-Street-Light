@@ -81,15 +81,15 @@ const DataLogging = () => {
       return <span className={isDark ? 'text-slate-500' : 'text-slate-400'}>↕️</span>
     }
     return sortConfig.direction === 'asc' ? 
-      <span className="text-caraga-blue">↑</span> : 
-      <span className="text-caraga-blue">↓</span>
+      <span className="text-aethersense-primary">↑</span> : 
+      <span className="text-aethersense-primary">↓</span>
   }
   
   const getStatusBadge = (status) => {
     const styles = {
-      online: 'bg-caraga-cyan/20 text-caraga-cyan border-caraga-cyan/50',
-      offline: 'bg-caraga-navy/20 text-caraga-navy border-caraga-navy/50',
-      fault: 'bg-caraga-burgundy/20 text-caraga-burgundy border-caraga-burgundy/50'
+      online: 'bg-green-500/20 text-green-500 border-green-500/50',
+      offline: 'bg-red-500/20 text-red-500 border-red-500/50',
+      fault: 'bg-yellow-500/20 text-yellow-500 border-yellow-500/50'
     }
     
     return (
@@ -126,12 +126,12 @@ const DataLogging = () => {
     <div className={`rounded-lg p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg transition-colors duration-300`}>
       <div className="flex items-center justify-between mb-6">
         <h2 className={`text-lg font-semibold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-          <Database className="w-5 h-5 text-caraga-blue" />
-          Data Logging - Caraga Region XIII
+          <Database className="w-5 h-5 text-aethersense-primary" />
+          AetherSense Data Logging - Caraga Region XIII
         </h2>
         <button
           onClick={exportToCSV}
-          className="bg-caraga-blue hover:bg-caraga-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-colors"
+          className="bg-aethersense-primary hover:bg-aethersense-dark text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-colors"
         >
           <Download className="w-4 h-4" />
           Export CSV
@@ -148,7 +148,7 @@ const DataLogging = () => {
             placeholder="Search by Node ID, Status, or Location..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-caraga-blue transition-colors ${
+            className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-aethersense-primary transition-colors ${
               isDark 
                 ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400' 
                 : 'bg-white border-slate-300 text-slate-900 placeholder-slate-500'
@@ -162,7 +162,7 @@ const DataLogging = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className={`px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-caraga-blue transition-colors ${
+            className={`px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-aethersense-primary transition-colors ${
               isDark 
                 ? 'bg-slate-700 border-slate-600 text-white' 
                 : 'bg-white border-slate-300 text-slate-900'
@@ -181,7 +181,7 @@ const DataLogging = () => {
           <select
             value={locationFilter}
             onChange={(e) => setLocationFilter(e.target.value)}
-            className={`px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-caraga-blue transition-colors ${
+            className={`px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-aethersense-primary transition-colors ${
               isDark 
                 ? 'bg-slate-700 border-slate-600 text-white' 
                 : 'bg-white border-slate-300 text-slate-900'

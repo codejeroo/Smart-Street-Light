@@ -62,9 +62,9 @@ const MapView = () => {
   
   const getStatusColor = (status) => {
     switch (status) {
-      case 'online': return 'text-caraga-cyan'
-      case 'fault': return 'text-caraga-burgundy'
-      default: return 'text-caraga-navy'
+      case 'online': return 'text-green-500'
+      case 'fault': return 'text-yellow-500'
+      default: return 'text-red-500'
     }
   }
   
@@ -80,8 +80,8 @@ const MapView = () => {
     <div className={`rounded-lg p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg transition-colors duration-300`}>
       <div className="flex items-center justify-between mb-4">
         <h2 className={`text-lg font-semibold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-          <MapPin className="w-5 h-5 text-caraga-blue" />
-          Caraga Region XIII - Network Map
+          <MapPin className="w-5 h-5 text-aethersense-primary" />
+          AetherSense Network Map - Caraga Region XIII
         </h2>
         
         {/* Legend with standard status colors */}
@@ -102,13 +102,19 @@ const MapView = () => {
       </div>
       
       <div className={`h-96 relative rounded-lg overflow-hidden border-2 ${
-        isDark ? 'border-slate-600' : 'border-caraga-blue/20'
-      }`}>
+        isDark ? 'border-slate-600' : 'border-aethersense-primary/20'
+      }`} style={{ touchAction: 'auto' }}>
         <MapContainer
           center={caragaCenter}
           zoom={9}
-          style={{ height: '100%', width: '100%' }}
+          style={{ 
+            height: '100%', 
+            width: '100%',
+            zIndex: 1
+          }}
           ref={mapRef}
+          scrollWheelZoom={false}
+          doubleClickZoom={true}
         >
           <TileLayer
             url={isDark 
@@ -130,15 +136,15 @@ const MapView = () => {
               <Popup className={`custom-popup ${isDark ? 'dark-popup' : 'light-popup'}`}>
                 <div className={`p-3 min-w-[280px] ${isDark ? 'bg-slate-800 text-white' : 'bg-white text-slate-900'}`}>
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold text-lg text-caraga-blue">
+                    <h3 className="font-semibold text-lg text-aethersense-primary">
                       {node.name || node.id}
                     </h3>
                     <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
                       node.status === 'online' 
-                        ? 'bg-caraga-cyan/20 text-caraga-cyan' 
+                        ? 'bg-green-500/20 text-green-500' 
                         : node.status === 'offline'
-                        ? 'bg-caraga-navy/20 text-caraga-navy'
-                        : 'bg-caraga-burgundy/20 text-caraga-burgundy'
+                        ? 'bg-red-500/20 text-red-500'
+                        : 'bg-yellow-500/20 text-yellow-500'
                     }`}>
                       {getStatusIcon(node.status)}
                       <span className="capitalize">{node.status}</span>
@@ -160,7 +166,7 @@ const MapView = () => {
                       <span className={`flex items-center gap-1 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                         Node ID:
                       </span>
-                      <span className="font-mono text-xs bg-caraga-blue/10 px-2 py-1 rounded">
+                      <span className="font-mono text-xs bg-aethersense-primary/10 px-2 py-1 rounded">
                         {node.id}
                       </span>
                     </div>
@@ -239,40 +245,14 @@ const MapView = () => {
       </div>
       
       <div className={`mt-4 p-3 rounded-md ${
-        isDark ? 'bg-slate-700/50' : 'bg-caraga-blue/5'
+        isDark ? 'bg-slate-700/50' : 'bg-aethersense-primary/5'
       }`}>
         <p className={`text-sm ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
-          <strong className="text-caraga-blue">Coverage Area:</strong> Caraga Region XIII encompasses 
+          <strong className="text-aethersense-primary">Coverage Area:</strong> Caraga Region XIII encompasses 
           the provinces of Agusan del Norte, Agusan del Sur, Surigao del Norte, Surigao del Sur, 
           and Dinagat Islands. Click on any marker to view detailed node information and status.
         </p>
       </div>
-      
-      <style jsx global>{`
-        @keyframes pulse {
-          0% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.1); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-        
-        .dark-popup .leaflet-popup-content-wrapper {
-          background-color: #1e293b !important;
-          border: 1px solid #475569 !important;
-        }
-        .dark-popup .leaflet-popup-tip {
-          background-color: #1e293b !important;
-          border: 1px solid #475569 !important;
-        }
-        
-        .light-popup .leaflet-popup-content-wrapper {
-          background-color: white !important;
-          border: 1px solid #e2e8f0 !important;
-        }
-        .light-popup .leaflet-popup-tip {
-          background-color: white !important;
-          border: 1px solid #e2e8f0 !important;
-        }
-      `}</style>
     </div>
   )
 }

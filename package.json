@@ -1,7 +1,7 @@
 {
-  "name": "smart-streetlight-dashboard",
+  "name": "aethersense",
   "version": "1.0.0",
-  "description": "React dashboard for monitoring solar-powered smart streetlights with LoRa and WSN",
+  "description": "AetherSense - Smart Street Light Monitoring Dashboard for Caraga Region XIII",
   "main": "index.js",
   "scripts": {
     "dev": "vite",

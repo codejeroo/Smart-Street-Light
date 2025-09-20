@@ -222,27 +222,27 @@ const TechnologyComparison = () => {
         
         {/* Side-by-side Comparison */}
         <div className="space-y-3">
-          <h3 className="text-sm font-medium text-gray-300 mb-3">Performance Metrics</h3>
+          <h3 className={`text-sm font-medium mb-3 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Performance Metrics</h3>
           
           {comparisonMetrics.map((metric, index) => (
-            <div key={index} className="bg-dark-900 border border-dark-700 rounded-lg p-3">
-              <div className="text-xs text-gray-400 mb-2">{metric.label}</div>
+            <div key={index} className={`${isDark ? 'bg-slate-800 border-slate-700' : 'bg-gray-100 border-gray-300'} border rounded-lg p-3`}>
+              <div className={`text-xs mb-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{metric.label}</div>
               <div className="grid grid-cols-2 gap-4">
                 <div className={`text-center p-2 rounded ${
                   metric.winner === 'wsn' 
                     ? 'bg-primary-500/20 border border-primary-500/50' 
-                    : 'bg-dark-800'
+                    : isDark ? 'bg-slate-700' : 'bg-gray-200'
                 }`}>
                   <div className="text-sm font-medium text-primary-400">WSN</div>
-                  <div className="text-white font-bold">{metric.wsn}</div>
+                  <div className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{metric.wsn}</div>
                 </div>
                 <div className={`text-center p-2 rounded ${
                   metric.winner === 'lora' 
                     ? 'bg-accent-500/20 border border-accent-500/50' 
-                    : 'bg-dark-800'
+                    : isDark ? 'bg-slate-700' : 'bg-gray-200'
                 }`}>
                   <div className="text-sm font-medium text-accent-500">LoRa</div>
-                  <div className="text-white font-bold">{metric.lora}</div>
+                  <div className={`font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{metric.lora}</div>
                 </div>
               </div>
             </div>

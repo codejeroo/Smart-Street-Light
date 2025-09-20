@@ -86,11 +86,11 @@ const EnergyPanel = () => {
     <div className={`rounded-lg p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg transition-colors duration-300`}>
       <div className="flex items-center justify-between mb-6">
         <h2 className={`text-lg font-semibold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-          <Sun className="w-5 h-5 text-caraga-blue" />
+          <Sun className="w-5 h-5 text-aethersense-primary" />
           Energy & Sensor Data
         </h2>
         <div className={`text-sm px-3 py-1 rounded-full ${
-          isDark ? 'bg-slate-700 text-slate-300' : 'bg-caraga-blue/10 text-caraga-blue'
+          isDark ? 'bg-slate-700 text-slate-300' : 'bg-aethersense-primary/10 text-aethersense-primary'
         }`}>
           Caraga Region XIII
         </div>

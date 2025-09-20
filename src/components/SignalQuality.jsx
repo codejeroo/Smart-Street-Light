@@ -203,20 +203,24 @@ const SignalQuality = () => {
       <div className="p-6">
         {/* Signal Quality Metrics */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="bg-dark-900 border border-dark-700 rounded-lg p-3 text-center">
-            <div className="text-lg font-bold text-primary-400">
+          <div className={`rounded-lg p-3 text-center border ${
+            isDark ? 'bg-slate-800 border-slate-700' : 'bg-gray-50 border-gray-200'
+          }`}>
+            <div className="text-lg font-bold text-aethersense-primary">
               {data.rssi[data.rssi.length - 1]} dBm
             </div>
-            <div className="text-xs text-gray-400">
+            <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               RSSI @ {signalData.distances[signalData.distances.length - 1]}m
             </div>
           </div>
           
-          <div className="bg-dark-900 border border-dark-700 rounded-lg p-3 text-center">
-            <div className="text-lg font-bold text-accent-500">
+          <div className={`rounded-lg p-3 text-center border ${
+            isDark ? 'bg-slate-800 border-slate-700' : 'bg-gray-50 border-gray-200'
+          }`}>
+            <div className="text-lg font-bold text-aethersense-secondary">
               {data.snr[data.snr.length - 1]} dB
             </div>
-            <div className="text-xs text-gray-400">
+            <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               SNR @ {signalData.distances[signalData.distances.length - 1]}m
             </div>
           </div>
@@ -231,14 +235,16 @@ const SignalQuality = () => {
         <div className="mt-6 space-y-3">
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="text-gray-300">Signal Strength</span>
-              <span className="text-primary-400">
+              <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>Signal Strength</span>
+              <span className="text-aethersense-primary">
                 {data.rssi[0] > -60 ? 'Excellent' : 
                  data.rssi[0] > -70 ? 'Good' : 
                  data.rssi[0] > -80 ? 'Fair' : 'Poor'}
               </span>
             </div>
-            <div className="w-full bg-dark-700 rounded-full h-2">
+            <div className={`w-full rounded-full h-2 ${
+              isDark ? 'bg-slate-700' : 'bg-gray-200'
+            }`}>
               <div 
                 className={`h-2 rounded-full transition-all duration-500 ${
                   data.rssi[0] > -60 ? 'bg-green-500' :
@@ -252,14 +258,16 @@ const SignalQuality = () => {
           
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="text-gray-300">Noise Ratio</span>
-              <span className="text-accent-500">
+              <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>Noise Ratio</span>
+              <span className="text-aethersense-secondary">
                 {data.snr[0] > 10 ? 'Excellent' : 
                  data.snr[0] > 5 ? 'Good' : 
                  data.snr[0] > 0 ? 'Fair' : 'Poor'}
               </span>
             </div>
-            <div className="w-full bg-dark-700 rounded-full h-2">
+            <div className={`w-full rounded-full h-2 ${
+              isDark ? 'bg-slate-700' : 'bg-gray-200'
+            }`}>
               <div 
                 className={`h-2 rounded-full transition-all duration-500 ${
                   data.snr[0] > 10 ? 'bg-green-500' :

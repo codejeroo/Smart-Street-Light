@@ -7,7 +7,9 @@ import NetworkPerformance from './components/NetworkPerformance'
 import EnergyPanel from './components/EnergyPanel'
 import SystemAlerts from './components/SystemAlerts'
 import SignalQuality from './components/SignalQuality'
-import EconomicAnalysis from './components/EconomicAnalysis'
+import EnvironmentalData from './components/EnvironmentalData'
+import PredictiveAnalytics from './components/PredictiveAnalytics'
+import AnomalyDetection from './components/AnomalyDetection'
 import TechnologyComparison from './components/TechnologyComparison'
 import DataLogging from './components/DataLogging'
 
@@ -17,7 +19,7 @@ function AppContent() {
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       isDark 
-        ? 'bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800 text-white' 
+        ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 text-white' 
         : 'bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900'
     }`}>
       {/* Header */}
@@ -52,13 +54,23 @@ function AppContent() {
             <SignalQuality />
           </div>
           
-          {/* Economic Analysis */}
+          {/* Environmental Data */}
           <div className="lg:col-span-1">
-            <EconomicAnalysis />
+            <EnvironmentalData />
           </div>
           
-          {/* Technology Comparison - Full Width */}
-          <div className="col-span-full xl:col-span-1">
+          {/* Predictive Analytics */}
+          <div className="lg:col-span-1">
+            <PredictiveAnalytics />
+          </div>
+          
+          {/* Anomaly Detection */}
+          <div className="lg:col-span-1">
+            <AnomalyDetection />
+          </div>
+          
+          {/* Technology Comparison */}
+          <div className="lg:col-span-1">
             <TechnologyComparison />
           </div>
           

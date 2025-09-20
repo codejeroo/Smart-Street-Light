@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className={`sticky top-0 z-50 transition-colors duration-300 ${
       isDark 
-        ? 'bg-dark-900/95 backdrop-blur-lg border-b border-dark-700' 
+        ? 'bg-slate-900/95 backdrop-blur-lg border-b border-slate-700' 
         : 'bg-white/95 backdrop-blur-lg border-b border-gray-200'
     }`}>
       <div className="container mx-auto px-4 py-4">
@@ -20,21 +20,19 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <div className={`p-2 rounded-xl ${
               isDark 
-                ? 'bg-gradient-to-r from-caraga-blue-400 to-caraga-cyan-400' 
-                : 'bg-gradient-to-r from-caraga-navy-500 to-caraga-blue-400'
+                ? 'bg-gradient-to-r from-aethersense-primary to-aethersense-secondary' 
+                : 'bg-gradient-to-r from-aethersense-dark to-aethersense-primary'
             }`}>
               <Lightbulb className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className={`text-xl sm:text-2xl font-bold ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}>
-                Caraga Smart Street Lights
+              <h1 className={`text-xl sm:text-2xl font-bold bg-gradient-to-r from-aethersense-primary to-aethersense-secondary bg-clip-text text-transparent`}>
+                AetherSense
               </h1>
               <p className={`text-sm ${
-                isDark ? 'text-gray-400' : 'text-gray-600'
+                isDark ? 'text-slate-400' : 'text-slate-600'
               }`}>
-                Solar-Powered IoT Monitoring Dashboard
+                Smart Street Light Monitoring • Caraga Region XIII
               </p>
             </div>
           </div>
@@ -53,8 +51,8 @@ const Header = () => {
                 className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                   technology === 'wsn'
                     ? isDark
-                      ? 'bg-caraga-blue-400 text-white shadow-lg'
-                      : 'bg-caraga-navy-500 text-white shadow-lg'
+                      ? 'bg-aethersense-primary text-white shadow-lg'
+                      : 'bg-aethersense-dark text-white shadow-lg'
                     : isDark
                       ? 'text-gray-400 hover:text-white hover:bg-dark-700'
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
@@ -68,8 +66,8 @@ const Header = () => {
                 className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                   technology === 'lora'
                     ? isDark
-                      ? 'bg-caraga-cyan-400 text-white shadow-lg'
-                      : 'bg-caraga-blue-400 text-white shadow-lg'
+                      ? 'bg-aethersense-secondary text-white shadow-lg'
+                      : 'bg-aethersense-accent text-white shadow-lg'
                     : isDark
                       ? 'text-gray-400 hover:text-white hover:bg-dark-700'
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
@@ -85,7 +83,7 @@ const Header = () => {
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-all duration-200 ${
                 isDark
-                  ? 'bg-dark-800 hover:bg-dark-700 text-yellow-400 border border-dark-700'
+                  ? 'bg-slate-800 hover:bg-slate-700 text-yellow-400 border border-slate-700'
                   : 'bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200'
               }`}
               aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
